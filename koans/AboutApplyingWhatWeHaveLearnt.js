@@ -64,15 +64,15 @@ describe("About Applying What We Have Learnt", function() {
 
     var sum = FILL_ME_IN;   /* try chaining range() and reduce() */
 
-    var numbers = _.chain(sum)
-      .range(1, 1001, 1)
-      .reduce(function(memo, value, index){
-        if (index % 3 === 0 || index % 5 === 0) {
-          memo += index;
-        }
-        return memo;
-      })
-      .value();
+    // var numbers = _.chain(sum)
+    //   .range(1, 1001, 1)
+    //   .reduce(function(memo, value, index){
+    //     if (index % 3 === 0 || index % 5 === 0) {
+    //       memo += index;
+    //     }
+    //     return memo;
+    //   })
+    //   .value();
 
     expect(233168).toBe(numbers);
   });
@@ -98,8 +98,7 @@ describe("About Applying What We Have Learnt", function() {
                        .map(function(product){return product["ingredients"]})
                        .flatten()
                        .reduce(function(memo, value){
-                         memo[value] = 0;
-                         memo[value] += 1;
+                         memo[value] = (memo[value] || 0) + 1; //neat trick to get around the inital NaN. I had about half the logic but needed some help with setting the initial value to 0. Cue taken from https://github.com/stephenmckinney/javascript-koans-jasmine-answers/blob/my-answers/koans/AboutApplyingWhatWeHaveLearnt.js
                          return memo;
                        }, ingredientCount)
                        .value();
