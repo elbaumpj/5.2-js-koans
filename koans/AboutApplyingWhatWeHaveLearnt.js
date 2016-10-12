@@ -62,7 +62,9 @@ describe("About Applying What We Have Learnt", function() {
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", function () {
 
-    var sum = FILL_ME_IN;   /* try chaining range() and reduce() */
+    var sum = 0;   /* try chaining range() and reduce() */
+
+    //***Abandoned attempt at using chaining***
 
     // var numbers = _.chain(sum)
     //   .range(1, 1001, 1)
@@ -74,7 +76,20 @@ describe("About Applying What We Have Learnt", function() {
     //   })
     //   .value();
 
-    expect(233168).toBe(numbers);
+    var arrayOfValues =[];
+    var numRange = _.range(1, 1001, 1);
+    for(var i = 0; i < numRange.length; i++) {
+      if (i % 3 === 0 || i % 5 === 0) {
+          arrayOfValues.push(i);
+        }
+        console.log(arrayOfValues);
+         return arrayOfValues;
+    }
+    var reduction = arrayOfValues.reduce(function(previousNum, currentNum){
+      return previousNum + currentNum;
+    });
+    sum = reduction;
+    expect(233168).toBe(sum);
   });
 
   /*********************************************************************************/
@@ -94,15 +109,15 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
-    var numOfShrooms = _.chain(products)
+    var numOfShrooms = _.chain(products) //got help from Dan on using the chain...
                        .map(function(product){return product["ingredients"]})
                        .flatten()
                        .reduce(function(memo, value){
-                         memo[value] = (memo[value] || 0) + 1; //neat trick to get around the inital NaN. I had about half the logic but needed some help with setting the initial value to 0. Cue taken from https://github.com/stephenmckinney/javascript-koans-jasmine-answers/blob/my-answers/koans/AboutApplyingWhatWeHaveLearnt.js
+                         memo[value] = (memo[value] || 0) + 1; //neat trick to get around the inital NaN. I had about half the logic but needed some help with setting the initial value to 0 if it had none. Cue taken from https://github.com/stephenmckinney/javascript-koans-jasmine-answers/blob/my-answers/koans/AboutApplyingWhatWeHaveLearnt.js
                          return memo;
                        }, ingredientCount)
                        .value();
-                       console.log(numOfShrooms);
+
 
     expect(ingredientCount['mushrooms']).toBe(2);
   });
