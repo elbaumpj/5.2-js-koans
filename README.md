@@ -1,1 +1,2 @@
-# 5.2-js-koans
+#5.2-js-koans
+* I completed this assignment during Week 5 at The Iron Yard. The assignment was a series of "koans" based on the popular Ruby Koans. This was a great review of JavaScript syntax that required understand of arrays, objects, and object-oriented and functional programming in JavaScript. There's a link in the descripton that will show the passing tests. You can also check out the koans folder to see how I apporoached the different code challenges. Last, you can clone the repo if you'd like to get it working locally. 
